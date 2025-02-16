@@ -1,0 +1,24 @@
+﻿<!-- Details.cshtml - Display the details of a specific comment -->
+ @model             Comment
+
+<h2>Comment Details</h2>
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Content</dt>
+        <dd class="col-sm-10">@Model.Content</dd>
+
+        <dt class="col-sm-2">Created At</dt>
+        <dd class="col-sm-10">@Model.CreatedAt.ToString("yyyy-MM-dd")</dd>
+
+        <dt class="col-sm-2">Post</dt>
+        <dd class="col-sm-10">@Model.Post.Content</dd>
+
+        <dt class="col-sm-2">User</dt>
+        <dd class="col-sm-10">@Model.User.UserName</dd>
+    </dl>
+</div>
+<a href="@Url.Action("Index", "Comment")" class="btn btn-secondary">Back to List</a>
+
+<hr />

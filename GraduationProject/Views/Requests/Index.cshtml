@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GraduationProject.Models.Request>
+
+<h1>Requests</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Service</th>
+            <th>Status</th>
+            <th>Request Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Id</td>
+                <td>@request.User?.UserName</td>
+                <td>@request.Service? .Name</td>
+                <td>@request.Status</td>
+                <td>@request.RequestDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@request.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@request.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@request.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@using System.Security.Claims
+@model Rate
+
+@{
+    ViewData["Title"] = "Create";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the authenticated UserId
+}
+
+<h2>Create Rate</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <!-- Service Selection -->
+    <div class="form-group">
+        <label asp-for="ServiceId" class="control-label"></label>
+        <select asp-for="ServiceId" class="form-control" asp-items="ViewBag.Services">
+            <option value="">-- Select a Service --</option>
+        </select>
+        <span asp-validation-for="ServiceId" class="text-danger"></span>
+    </div>
+
+    <!-- Rate Selection -->
+    <div class="form-group">
+        <label asp-for="RateValue" class="control-label"></label>
+        <select asp-for="RateValue" class="form-control">
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+        </select>
+        <span asp-validation-for="RateValue" class="text-danger"></span>
+    </div>
+
+    <!-- Review (Optional) -->
+    <div class="form-group">
+        <label asp-for="Review" class="control-label"></label>
+        <textarea asp-for="Review" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Review" class="text-danger"></span>
+    </div>
+
+    <!-- Hidden Field for UserId (Corrected) -->
+    <input type="hidden" asp-for="UserId" value="@userId" />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

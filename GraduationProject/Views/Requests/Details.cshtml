@@ -1,0 +1,10 @@
+﻿@model GraduationProject.Models.Request
+
+<h1>Request Details</h1>
+
+<p><strong>User:</strong> @Model.User?.UserName</p>
+<p><strong>Service:</strong> @Model.Service? .Name</p>
+<p><strong>Status:</strong> @Model.Status</p>
+<p><strong>Request Date:</strong> @Model.RequestDate.ToString("yyyy-MM-dd")</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
